@@ -36,7 +36,7 @@ class Application extends CI_Controller {
 	{
 		
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-
+                $this->data['user'] = $this->session->userdata('username');
 		// finally, build the browser page!
 		$this->data['data'] = $this->data;
 		$this->parser->parse('_template', $this->data);

@@ -23,7 +23,7 @@ Class Stock_info extends Application {
         $this->data['stock_array'] = $this->stock_model->get_stocks();
         
         //return the data in view  
-        $this->data['pagebody'] = 'Stock_view'; // this is the view we want shown
+        $this->data['pagebody'] = 'stockview'; // this is the view we want shown
 
         $this->render();
     }

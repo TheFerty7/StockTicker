@@ -1,33 +1,17 @@
 <h1>{player}</h1>
 <hr size=4>
 
-<script>
-    $(document).ready(function()
-    {
-        
-    });
-</script>
-
-<div>
-    <form id="bootstrapSelectForm" role="form" method="post" action="/playerprofile">
-        <div class="form-group">
-            <label for="sel1">Player:</label>
-            <select name="player" class="form-control" id="sel1" title="Pick a Player">
-                {player_array}
-                <option value="{Player}" type="submit">{Player}</option>
-                {/player_array}
-            </select>
-        </div>
-    </form>
-    <form action="/playerprofile" method="post"> Players 
-        <select name="player">
+<form class="form-inline" role="form" method="post" action="/playerprofile">
+    <div class="form-group">
+        <label for="email">&nbsp;&nbsp; Player:</label> &nbsp;&nbsp;
+        <select name="player" class="form-control" id="sel1">
             {player_array}
-            <option value="{Player}">{Player}</option>
+            <option value="{Player}" type="submit">{Player}</option>
             {/player_array}
         </select>
-        <input type="submit" value="Submit"/>
-    </form>
-</div>
+    </div> &nbsp;&nbsp;
+    <button type="submit" class="btn btn-info">Submit</button>
+</form>
 <br/>
 <div class="panel2 panel-primary col-md-4">
     <!-- Default panel contents -->

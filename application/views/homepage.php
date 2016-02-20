@@ -31,8 +31,7 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        
+                        <th>Name</th>                        
                         <th>Cash</th>
                     </tr>
                 </thead>
@@ -40,8 +39,7 @@
                     {player_array}
                     <tr>
                         <td><a href="/playerprofile/player/{Player}">{Player}</a></td>
-                        <td>{Cash}</td>
-                        
+                        <td>{Cash}</td>                       
                     </tr>
                     {/player_array}
                 </tbody>

@@ -2,13 +2,16 @@
 <hr size=4>
 
 <div>
-    <form action="/stockhistory/stock_" method="post">View other stocks 
-        <select name="Name">
-            {stock_array}
-            <option value="{Code}">{Name}</option>
-            {/stock_array}
-        </select>
-        <input type="submit" value="Submit"/>
+    <form class="form-inline" role="form" method="post" action="/stockhistory/stock_">
+        <div class="form-group">
+            <label for="email">&nbsp;&nbsp; Stock:</label> &nbsp;&nbsp;
+            <select name="Name" class="form-control" id="sel1">
+                {stock_array}
+                <option value="{Code}">{Name}</option>
+                {/stock_array}
+            </select>
+        </div> &nbsp;&nbsp;
+        <button type="submit" class="btn btn-info">Submit</button>
     </form>
 </div>
 <br/>
