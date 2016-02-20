@@ -33,15 +33,17 @@
                     <tr>
                         <th>Name</th>                        
                         <th>Cash</th>
+                        <th>Equity</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {player_array}
+                    {equity_array}
                     <tr>
                         <td><a href="/playerprofile/player/{Player}">{Player}</a></td>
-                        <td>{Cash}</td>                       
+                        <td>{Cash}</td>
+                        <td>{Equity}</td>
                     </tr>
-                    {/player_array}
+                    {/equity_array}
                 </tbody>
             </table>
             <!--end of table-->

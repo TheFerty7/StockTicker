@@ -34,6 +34,7 @@ class Welcome extends Application {
 
 		$this->data['pagebody'] = 'homepage';	// this is the view we want shown
 		
+                $this->data['equity_array'] = $this->stock_model->get_equity();
 		// build the list of authors, to pass on to our view
 		
 		$this->render();

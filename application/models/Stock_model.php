@@ -54,6 +54,11 @@ class Stock_model extends CI_Model {
         return $query->result_array();
     }
     
-    
+    function get_equity()
+	{
+        $sql = "SELECT * FROM equity ;";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
 
 }

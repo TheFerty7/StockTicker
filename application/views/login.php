@@ -1,4 +1,4 @@
-<form role="form" action="/stockhistory" method="post">
+<form role="form" action="/welcome" method="post">
     <div class="form-group">
         <label for="username">Username:</label>
         <input type="text" class="form-control" id="username" name="username">
