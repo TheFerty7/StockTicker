@@ -1,0 +1,10 @@
+/* CSS definition file containing site stylesheet */
+div.box { border-style: dashed; padding: 10px;}
+/*div.panel1 { margin-right:5px; padding:10px;}
+div.panel2 { margin-left:5px; padding:10px;}*/
+div.jumbotron { 
+    padding: 0.5em 0.6em;
+    h1 {
+        font-size: 20px;
+    }
+}
