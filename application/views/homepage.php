@@ -48,5 +48,8 @@
             </table>
             <!--end of table-->
         </div>
-    </div>             
+    </div>
+    {recent_moves_array}
+    <p>{Datetime},{Code}, {Action}, {Amount}</p>
+    {/recent_moves_array}
 </div> 
