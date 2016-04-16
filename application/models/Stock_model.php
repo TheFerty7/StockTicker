@@ -47,15 +47,14 @@ class Stock_model extends CI_Model {
         $query = $this->db->query($sql, array($id, $type));
         return $query->result_array();
     }
-    
-    function get_recent_trades($id){
+
+    function get_recent_trades($id) {
         $sql = "SELECT * FROM transactions WHERE Stock= ? ;";
         $query = $this->db->query($sql, array($id));
         return $query->result_array();
     }
-    
-    function get_equity()
-	{
+
+    function get_equity() {
         $sql = "SELECT * FROM equity ;";
         $query = $this->db->query($sql);
         return $query->result_array();

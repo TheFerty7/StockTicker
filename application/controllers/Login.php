@@ -1,6 +1,5 @@
 <?php
 
-
 class Login extends Application {
 
     function __construct() {
@@ -25,22 +24,21 @@ class Login extends Application {
         $user = $this->members->get_user($key);
         $password = $_POST['password'];
         $retrieved = $user[0]['password'];
-        if(strcmp($password, $retrieved) == 0){
+        if (strcmp($password, $retrieved) == 0) {
             $this->session->set_userdata('userID', $user[0]['name']);
             $this->session->set_userdata('userName', $user[0]['name']);
             //$this->session->set_userdata('userRole', $user->role);
-            //redirect('stockticker.local:4710/Welcome');  
-        }else{
-            redirect('/');
+            redirect('/welcome');
+        } else {
+            redirect('/Login');
         }
-        
     }
-    
-    function signup(){
+
+    function signup() {
         $name = $_POST['userid'];
         $password = $_POST['password'];
         $this->members->insert_into_members($name, $password);
-        //redirect("stockticker.local:4710/Login");
+        redirect('/welcome');
     }
 
     function logout() {
