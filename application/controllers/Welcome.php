@@ -29,15 +29,30 @@ class Welcome extends Application {
         $this->data['stock_array'] = $this->stock_model->get_stocks();
         $this->data['player_array'] = $this->stock_model->get_players();
 
-        $this->data['pagebody'] = 'homepage'; // this is the view we want shown
-
-        $this->data['equity_array'] = $this->stock_model->get_equity();
-        // build the list of authors, to pass on to our view
-
-        $this->render();
-    }
+		$this->data['pagebody'] = 'homepage';	// this is the view we want shown
+		
+                $this->data['equity_array'] = $this->stock_model->get_equity();
+                $this->stock_model->read_stocks();
+                $this->stock_model->reset_moves();
+		// build the list of authors, to pass on to our view
+                $file = file_put_contents("moves.csv", file_get_contents("http://bsx.jlparry.com/data/movement"));
+                $filedata = fopen("moves.csv", "r");
+                
+		while(($line = fgetcsv($filedata)) != false){
+                    if($line[1] != 'datetime'){
+                        $this->stock_model->insert_moves($line[1], $line[2], $line[3], $line[4]);
+                    }
+                    
+                }
+                fclose($filedata);
+                
+                $this->data['recent_moves_array'] = $this->stock_model->recent_moves();
+                
+		$this->render();
+	}
+        
+       
 
 }
 
 /* End of file Welcome.php */
-/* Location: application/controllers/Welcome.php */
