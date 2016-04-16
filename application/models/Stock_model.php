@@ -67,8 +67,20 @@ class Stock_model extends CI_Model {
                 
 	while(($line = fgetcsv($filedata)) != false){
                     //list($code[], $name[], $category[], $value[]) = $line;
-            
-            $this->stock_model->update_stocks($line[3], $line[0]);
+            if($line[1] != 'name')
+            $this->stock_model->insert_stocks($line[0], $line[1], $line[2], $line[3]);
+        }
+        fclose($filedata);
+    }
+    
+    function read_transactions(){
+        $file = file_put_contents("transactions.csv", file_get_contents("http://bsx.jlparry.com/data/transactions"));
+        $filedata = fopen("transactions.csv", "r");
+                
+	while(($line = fgetcsv($filedata)) != false){
+                    //list($code[], $name[], $category[], $value[]) = $line;
+            if($line[0] != 'seq')
+            $this->stock_model->insert_transactions($line[0], $line[1], $line[2], $line[3]);
         }
         fclose($filedata);
     }
@@ -78,21 +90,54 @@ class Stock_model extends CI_Model {
         $query = $this->db->query($sql, array($data, $name));
     }
     
-    function insert_moves($date, $code, $action, $amount){
+    function insert_moves($seq, $date, $code, $action, $amount){
         
-        $sql = "INSERT INTO movements (Datetime, Code, Action, Amount) Values (?, ?, ?, ?);";
-        $query = $this->db->query($sql, array($date, $code, $action, $amount));
+        $sql = "INSERT INTO movements (Seq, Datetime, Code, Action, Amount) Values (?, ?, ?, ?, ?);";
+        $query = $this->db->query($sql, array($seq, $date, $code, $action, $amount));
+    }
+    function insert_stocks($code, $name, $cat, $value)
+    {
+        $sql = "INSERT INTO stocks (Code, Name, Category, Value) Values (?, ?, ?, ?);";
+        $query = $this->db->query($sql, array($code, $name, $cat, $value));
+   
     }
     
+    function insert_transactions($seq, $date, $player, $stock, $trans, $quan){
+        
+        $sql = "INSERT INTO transactions(Seq, Datetime, Player, Stock, Trans, Quantity) Values (?, ?, ?, ?, ?, ?);";
+        $query = $this->db->query($sql, array($seq, $date, $player, $stock, $trans, $quan));
+    }
+        
+    
     function reset_moves(){
-        $sql = "DROP TABLE movements";
+        $sql = "DROP TABLE IF EXISTS movements";
         $this->db->query($sql);
-        $sql2 = "CREATE TABLE movements( Datetime varchar(19), Code varchar(4), Action varchar(4), Amount int(2));";
+        $sql2 = "CREATE TABLE movements(Seq int, Datetime varchar(19), Code varchar(4), Action varchar(4), Amount int(2));";
+        $this->db->query($sql2);
+    }
+    
+    function reset_stocks(){
+        $sql = "DROP TABLE IF EXISTS stocks";
+        $this->db->query($sql);
+        $sql2 = "CREATE TABLE stocks(Code varchar(4), Name varchar(20), Category varchar(2), Value int(4) );";
+        $this->db->query($sql2);
+    }
+    
+    function reset_transactions(){
+        $sql = "DROP TABLE IF EXISTS transactions";
+        $this->db->query($sql);
+        $sql2 = "CREATE TABLE transactions(Seq int, Datetime varchar(19), Player varchar(10), Stock varchar(4), Trans varchar(4), Quantity int(4));";
         $this->db->query($sql2);
     }
     
     function recent_moves(){
-        $sql = "SELECT * FROM movements ORDER BY datetime DESC LIMIT 5";
+        $sql = "SELECT * FROM movements ORDER BY seq DESC LIMIT 5";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    
+    function recent_transactions(){
+        $sql = "SELECT * FROM transactions ORDER BY seq DESC LIMIT 5";
         $query = $this->db->query($sql);
         return $query->result_array();
     }

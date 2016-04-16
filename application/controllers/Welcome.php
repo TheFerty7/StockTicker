@@ -26,12 +26,15 @@ class Welcome extends Application {
         } else {
             $this->session->set_userdata('username', $_POST['username']);
         }
-        $this->data['stock_array'] = $this->stock_model->get_stocks();
+        
         $this->data['player_array'] = $this->stock_model->get_players();
 
 		$this->data['pagebody'] = 'homepage';	// this is the view we want shown
 		
                 $this->data['equity_array'] = $this->stock_model->get_equity();
+                $this->stock_model->reset_transactions();
+                $this->stock_model->read_transactions();
+                $this->stock_model->reset_stocks();
                 $this->stock_model->read_stocks();
                 $this->stock_model->reset_moves();
 		// build the list of authors, to pass on to our view
@@ -40,12 +43,13 @@ class Welcome extends Application {
                 
 		while(($line = fgetcsv($filedata)) != false){
                     if($line[1] != 'datetime'){
-                        $this->stock_model->insert_moves($line[1], $line[2], $line[3], $line[4]);
+                        $this->stock_model->insert_moves($line[0], $line[1], $line[2], $line[3], $line[4]);
                     }
                     
                 }
                 fclose($filedata);
-                
+                $this->data['recent_transactions'] = $this->stock_model->get_transactions();
+                $this->data['stock_array'] = $this->stock_model->get_stocks();
                 $this->data['recent_moves_array'] = $this->stock_model->recent_moves();
                 
 		$this->render();
