@@ -57,7 +57,7 @@
     
     <div>
         {recent_transactions}
-        <p>{}</p>
+        <p>{Seq} {Datetime} {agent} {Player} {Stock} {Trans} {Quantity}</p>
         {/recent_transactions}
     </div>
     {role}

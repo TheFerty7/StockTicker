@@ -34,24 +34,15 @@ class Welcome extends Application {
 
 
             //UNCOMMENT BELOW IF HIS SERVER IS WORKING
-            /*
+            
               $this->stock_model->reset_transactions();
               $this->stock_model->read_transactions();
               $this->stock_model->reset_stocks();
               $this->stock_model->read_stocks();
               $this->stock_model->reset_moves();
-
-              $file = file_put_contents("moves.csv", file_get_contents("http://bsx.jlparry.com/data/movement"));
-              $filedata = fopen("moves.csv", "r");
-
-              while(($line = fgetcsv($filedata)) != false){
-              if($line[1] != 'datetime'){
-              $this->stock_model->insert_moves($line[0], $line[1], $line[2], $line[3], $line[4]);
-              }
-
-              }
-              fclose($filedata);
-             */
+              $this->stock_model->read_moves();
+              
+             
         }
         $this->data['role'] = $this->session->userdata('role');
         $this->data['recent_transactions'] = $this->stock_model->get_transactions();
