@@ -2,7 +2,7 @@
 <hr size=4>
 
 <div>
-    <form class="form-inline" role="form" method="post" action="/stockhistory/stock_">
+    <form class="form-inline" role="form" method="post" action="/index.php/stockhistory/stock_">
         <div class="form-group">
             <label for="email">&nbsp;&nbsp; Stock:</label> &nbsp;&nbsp;
             <select name="Name" class="form-control" id="sel1">

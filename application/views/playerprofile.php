@@ -1,12 +1,12 @@
 <h1>{player}</h1>
 <hr size=4>
 
-<form class="form-inline" role="form" method="post" action="/playerprofile">
+<form class="form-inline" role="form" method="post" action="/index.php/playerprofile">
     <div class="form-group">
         <label for="email">&nbsp;&nbsp; Player:</label> &nbsp;&nbsp;
         <select name="player" class="form-control" id="sel1">
             {player_array}
-            <option value="{Player}" type="submit">{Player}</option>
+            <option value="{player}" type="submit">{player}</option>
             {/player_array}
         </select>
     </div> &nbsp;&nbsp;

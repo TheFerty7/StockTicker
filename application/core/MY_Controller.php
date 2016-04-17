@@ -33,6 +33,12 @@ class Application extends CI_Controller {
      */
     function render() {
 
+        if($this->session->userdata('role') == 'player'){
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices2'), true);
+        }else{
+            $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
+
+        }
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
         $this->data['user'] = $this->session->userdata('username');
         // finally, build the browser page!
@@ -40,20 +46,23 @@ class Application extends CI_Controller {
         $this->parser->parse('_template', $this->data);
     }
 
+    
     function restrict($roleNeeded = null) {
-        $userRole = $this->session->userdata('userRole');
+        $userRole = $this->session->userdata('role');
         if ($roleNeeded != null) {
             if (is_array($roleNeeded)) {
                 if (!in_array($userRole, $roleNeeded)) {
-                    redirect("/");
+                    redirect("/Nope");
                     return;
                 }
             } else if ($userRole != $roleNeeded) {
-                redirect("/");
+                redirect("/Nope");
                 return;
             }
         }
     }
+    
+     
 
 }
 

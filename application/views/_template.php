@@ -34,14 +34,7 @@ if (!defined('APPPATH'))
                         </button>
                         <a class="navbar-brand">Stock Ticker</a>
                     </div>
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/welcome">
-                                <span class="glyphicon glyphicon-home"></span> Home</a></li>
-                        <li><a href="/stockhistory">
-                                <span class="glyphicon glyphicon-blackboard"></span> History</a></li>
-                        <li><a href="/playerprofile">
-                                <span class="glyphicon glyphicon-user"></span> Portfolio</a></li>
-                    </ul>
+                    {menubar}
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/login"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                     </ul>

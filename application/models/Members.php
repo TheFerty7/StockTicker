@@ -12,16 +12,21 @@ class Members extends CI_Model {
     parent::__construct();
   }
   
+  function get_users() {
+        $query = $this->db->get('members');
+        return $query->result_array();
+    }
+  
   function get_user($name) {
-        $sql_movement = "SELECT * FROM members WHERE name= ?;";
+        $sql_movement = "SELECT * FROM members WHERE player= ?;";
         $query = $this->db->query($sql_movement, array($name));
         return $query->result_array();
     }
   
     
-   function insert_into_members($name, $pass){
-       $sql = "INSERT INTO members (name, password) VALUES (?, ?);";
-       $query = $this->db->query($sql, array($name, $pass));
+   function insert_into_members($name, $pass, $role, $cash){
+       $sql = "INSERT INTO members (player, password, role, cash) VALUES (?, ?, ?, ?);";
+       $query = $this->db->query($sql, array($name, $pass, $role, $cash));
        
    }
     

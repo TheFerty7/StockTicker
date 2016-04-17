@@ -4,8 +4,9 @@ class Playerprofile extends Application {
 
     function __construct() {
         parent::__construct();
-        $this->restrict(ROLE_ADMIN);
+        $this->restrict(array(ROLE_USER, ROLE_ADMIN));
         $this->load->model('stock_model');
+        $this->load->model('members');
     }
 
     //-------------------------------------------------------------
@@ -15,7 +16,7 @@ class Playerprofile extends Application {
     function index() {
         //var_dump($_POST);
 
-        $this->data['player_array'] = $this->stock_model->get_players();
+        $this->data['player_array'] = $this->members->get_users();
         if (!isset($_POST['player'])) {
             $this->data['player'] = $this->session->userdata('username');
         } else {
