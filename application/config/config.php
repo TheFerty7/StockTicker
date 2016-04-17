@@ -8,7 +8,8 @@ if (!defined('BASEPATH'))
 $config['menu_choices'] = array(
     'menudata' => array(
         array('name' => 'History', 'link' => '/stockhistory'),
-        array('name' => 'Portfolio', 'link' => '/playerprofile')
+        array('name' => 'Portfolio', 'link' => '/playerprofile'),
+        array('name' => 'Management', 'link' => '/Management')
     )
 );
 
@@ -16,6 +17,7 @@ $config['menu_choices2'] = array(
     'menudata' => array(
         array('name' => 'History', 'link' => '/stockhistory'),
         array('name' => 'Portfolio', 'link' => '/playerprofile'),
+        array('name' => 'Management', 'link' => '/Management'),
         array('name' => 'Gameplay', 'link' => '/gameplay')
     )
 );
