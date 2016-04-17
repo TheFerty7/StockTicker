@@ -4,10 +4,19 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 // the menu basics (text navbar)
+
 $config['menu_choices'] = array(
     'menudata' => array(
-        array('name' => 'First', 'link' => '/first'),
-        array('name' => 'Last', 'link' => '/last'),
+        array('name' => 'History', 'link' => '/stockhistory'),
+        array('name' => 'Portfolio', 'link' => '/playerprofile')
+    )
+);
+
+$config['menu_choices2'] = array(
+    'menudata' => array(
+        array('name' => 'History', 'link' => '/stockhistory'),
+        array('name' => 'Portfolio', 'link' => '/playerprofile'),
+        array('name' => 'Gameplay', 'link' => '/gameplay')
     )
 );
 
@@ -26,7 +35,7 @@ $config['menu_choices'] = array(
   | path to your installation.
   |
  */
-$config['base_url'] = 'http://stockticker.local:4710';
+$config['base_url'] = 'http://stock.local:4711/index.php';
 
 /*
   |--------------------------------------------------------------------------
