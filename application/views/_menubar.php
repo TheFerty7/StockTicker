@@ -7,4 +7,5 @@
             <span class="glyphicon glyphicon-user"></span>{name}</a></li>
 
     {/menudata}
+    
 </ul>

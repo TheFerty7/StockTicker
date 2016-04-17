@@ -8,6 +8,8 @@ class Login extends Application {
         $this->load->model('members');
         $this->load->library('upload');
         $this->session->set_userdata('role', "");
+        $this->session->set_userdata('userID', "");
+        $this->session->set_userdata('username', "");
     }
 
     //-------------------------------------------------------------
@@ -16,6 +18,9 @@ class Login extends Application {
 
     function index() {
         $this->session->set_userdata('role', "");
+        $this->session->set_userdata('userID', "");
+        $this->session->set_userdata('username', "");
+        $this->session->sess_destroy();
         $this->data['pagebody'] = 'login'; // this is the view we want shown
         // build the list of authors, to pass on to our view
         //$this->session->sess_destroy();
@@ -79,7 +84,7 @@ class Login extends Application {
 
     function logout() {
         $this->session->sess_destroy();
-        //redirect('/');
+        redirect('/');
     }
 
 }

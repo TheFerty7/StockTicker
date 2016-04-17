@@ -35,8 +35,11 @@ if (!defined('APPPATH'))
                         <a class="navbar-brand">Stock Ticker</a>
                     </div>
                     {menubar}
+
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/login"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                        <li><a>
+                                {user}</a></li>
+                        <li><a href="/index.php/login/logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                     </ul>
                 </div>
             </nav>
